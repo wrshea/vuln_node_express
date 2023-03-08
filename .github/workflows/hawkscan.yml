@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
-        uses: actions/checkout@v2.0.1
+        uses: actions/checkout@v2
+      - name: Run Nginx
+        run: docker run --rm --detach --publish 8080:80 --name nginx_test nginx
       - name: Run HawkScan
         uses: stackhawk/hawkscan-action@v2
         with:
